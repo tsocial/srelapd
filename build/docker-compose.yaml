@@ -1,0 +1,13 @@
+version: '3'
+services:
+  srelapd:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    image: tsl8/srelapd
+    ports:
+      - 8089:8080
+    restart: always
+    entrypoint: "./srelapd --port=8080 --config=/opt/ldap.json"
+    volumes:
+      - "./ldap.json:/opt/ldap.json"

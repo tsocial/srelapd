@@ -1,0 +1,19 @@
+# Ignore all
+*
+
+# Unignore all with extensions
+!*.*
+
+# Unignore all dirs
+!*/
+
+.idea*
+*.iml
+vendor/*
+
+API.md
+docs.go
+
+.terraform/
+*_OSX.sh
+*.json
