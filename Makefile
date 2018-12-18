@@ -16,7 +16,10 @@ build: deps
 docker_build: build
 	docker-compose -f build/docker-compose.yaml build srelapd
 
-docker_upload:
+docker_login:
+	echo "$(DOCKER_PASSWORD)" | docker login -u "$(DOCKER_USERNAME)" --password-stdin
+
+docker_upload: docker_login
 	docker tag $(SERVER_REPO):latest $(SERVER_REPO):$(TRAVIS_BRANCH)-latest
 	docker tag $(SERVER_REPO):latest $(SERVER_REPO):$(TRAVIS_BRANCH)-$(TRAVIS_BUILD_NUMBER)
 	docker push $(SERVER_REPO):latest
