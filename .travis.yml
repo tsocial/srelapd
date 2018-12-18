@@ -8,20 +8,9 @@ addons:
 go:
   - "1.10"
 
-before_script:
-  - curl -fSL "https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_linux_amd64.zip" -o terraform.zip
-  - sudo unzip terraform.zip -d /opt/terraform
-  - sudo ln -s /opt/terraform/terraform /usr/bin/terraform
-  - rm -f terraform.zip
-  - curl -fSL https://releases.hashicorp.com/nomad/0.8.6/nomad_0.8.6_linux_amd64.zip -o nomad.zip
-  - sudo unzip nomad.zip -d /opt/nomad
-  - sudo ln -s /opt/nomad/nomad /usr/bin/nomad
-  - rm -f nomad_0.8.6_linux_amd64.zip
-  - nohup nomad agent --dev &
-
 script:
   - make build
-  - docker-compose -f docker-compose.yaml up -d srelapd
+  - docker-compose -f ./build/docker-compose.yaml up -d srelapd
   - sleep 5
   - ldapsearch -LLL -H ldap://localhost:8089 -D cn=ldap10,ou=sre,dc=tsocial,dc=com -w mysecret -x -bdc=tsocial,dc=com cn=ldap20
 
