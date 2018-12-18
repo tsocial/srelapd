@@ -1,0 +1,52 @@
+{
+  "baseDN": "dc=tsocial,dc=com",
+  "users": [
+    {
+      "name": "ldap10",
+      "givenname": "Test",
+      "sn": "Account",
+      "mail": "test@trustingsocial.com",
+      "unixid": 5002,
+      "primarygroup": 5501,
+      "loginShell": "/bin/bash",
+      "homeDir": "/home/ldap10",
+      "passsha256": "652c7dc687d98c9889304ed2e408c74b611e86a40caa51c4b43f1dd5913c5cd0",
+      "sshkeys": ["ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA3UKCEllO2IZXgqNygiVb+dDLJJwVw3AJwV34t2jzR+/tUNVeJ9XddKpYQektNHsFmY93lJw5QDSbeH/mAC4KPoUM47EriINKEelRbyG4hC/ko/e2JWqEclPS9LP7GtqGmscXXo4JFkqnKw4TIRD52XI9n1syYM9Y8rJ88fjC/Lpn+01AB0paLVIfppJU35t0Ho9doHAEfEvcQA6tcm7FLJUvklAxc8WUbdziczbRV40KzDroIkXAZRjX7vXXhh/p7XBYnA0GO8oTa2VY4dTQSeDAUJSUxbzevbL0ll9Gi1uYaTDQyE5gbn2NfJSqq0OYA+3eyGtIVjFYZgi+txSuhw=="]
+    },
+    {
+      "name": "ldap20",
+      "givenname": "Test2",
+      "sn": "Account2",
+      "mail": "test@trustingsocial.com",
+      "unixid": 5003,
+      "primarygroup": 5501,
+      "loginShell": "/bin/bash",
+      "homeDir": "/home/ldap20",
+      "passsha256": "652c7dc687d98c9889304ed2e408c74b611e86a40caa51c4b43f1dd5913c5cd0",
+      "sshkeys": ["ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEA3UKCEllO2IZXgqNygiVb+dDLJJwVw3AJwV34t2jzR+/tUNVeJ9XddKpYQektNHsFmY93lJw5QDSbeH/mAC4KPoUM47EriINKEelRbyG4hC/ko/e2JWqEclPS9LP7GtqGmscXXo4JFkqnKw4TIRD52XI9n1syYM9Y8rJ88fjC/Lpn+01AB0paLVIfppJU35t0Ho9doHAEfEvcQA6tcm7FLJUvklAxc8WUbdziczbRV40KzDroIkXAZRjX7vXXhh/p7XBYnA0GO8oTa2VY4dTQSeDAUJSUxbzevbL0ll9Gi1uYaTDQyE5gbn2NfJSqq0OYA+3eyGtIVjFYZgi+txSuhw=="]
+    },
+    {
+      "name": "otpuser",
+      "unixid": 5004,
+      "primarygroup": 5501,
+      "passsha256": "652c7dc687d98c9889304ed2e408c74b611e86a40caa51c4b43f1dd5913c5cd0",
+      "otpsecret": "3hnvnk4ycv44glziedqfefw6s25j4dougs3rk"
+    }
+  ],
+  "groups": [
+    {
+      "name": "sre",
+      "unixid": 5501
+    },
+    {
+
+      "name": "operator",
+      "unixid": 5502
+    },
+    {
+      "name": "vpn",
+      "unixid": 5503,
+      "includegroups": [ 5501, 5502 ]
+    }
+  ]
+}

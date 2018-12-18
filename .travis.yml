@@ -10,7 +10,7 @@ go:
 
 script:
   - make build
-  - docker-compose -f build/docker-compose.yaml up srelapd
+  - docker-compose -f build/docker-compose.yaml up -d srelapd
   - sleep 5
   - ldapsearch -LLL -H ldap://localhost:8089 -D cn=ldap10,ou=sre,dc=tsocial,dc=com -w mysecret -x -bdc=tsocial,dc=com cn=ldap20
 
