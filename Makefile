@@ -16,7 +16,7 @@ build: deps
 docker_build: build
 	docker-compose -f build/docker-compose.yaml build srelapd
 
-docker_upload: docker_build
+docker_upload:
 	docker tag $(SERVER_REPO):latest $(SERVER_REPO):$(TRAVIS_BRANCH)-latest
 	docker tag $(SERVER_REPO):latest $(SERVER_REPO):$(TRAVIS_BRANCH)-$(TRAVIS_BUILD_NUMBER)
 	docker push $(SERVER_REPO):latest
