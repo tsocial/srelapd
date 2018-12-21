@@ -26,10 +26,6 @@
 
 
 [[constraint]]
-  branch = "master"
-  name = "github.com/nmcclain/ldap"
-
-[[constraint]]
   name = "github.com/pquerna/otp"
   version = "1.0.0"
 

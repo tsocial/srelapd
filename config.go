@@ -9,8 +9,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/nmcclain/ldap"
 	"github.com/pquerna/otp/totp"
+	"github.com/tsocial/srelapd/ldap"
 )
 
 type configHandler struct {

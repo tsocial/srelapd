@@ -6,7 +6,7 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/nmcclain/ldap"
+	"github.com/tsocial/srelapd/ldap"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
@@ -60,7 +60,6 @@ func main() {
 
 	// configure the backend
 	s := ldap.NewServer()
-	s.EnforceLDAP = true
 	handler := newConfigHandler(cfg)
 
 	s.BindFunc("", handler)

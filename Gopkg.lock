@@ -41,14 +41,6 @@
   revision = "2661553a04840c556cf4f3cd69fa3332bae84e9d"
 
 [[projects]]
-  branch = "master"
-  digest = "1:360299c608532dbf9add4551318283446c309b1950e3774d56aa78342b2f87ee"
-  name = "github.com/nmcclain/ldap"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "6e14e82719330c918c5b4139cc80c51d7ebc5fba"
-
-[[projects]]
   digest = "1:6c7a3f738e37a1c7ad3d56122a34932140654d51a57e01f8613cdf3eaf050911"
   name = "github.com/pquerna/otp"
   packages = [
@@ -72,7 +64,7 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
-    "github.com/nmcclain/ldap",
+    "github.com/nmcclain/asn1-ber",
     "github.com/pquerna/otp/totp",
     "gopkg.in/alecthomas/kingpin.v2",
   ]
