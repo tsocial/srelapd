@@ -135,26 +135,9 @@ type Attribute struct {
 	attrType string
 	attrVals []string
 }
-type AddRequest struct {
-	dn         string
-	attributes []Attribute
-}
-type DeleteRequest struct {
-	dn string
-}
-type ModifyDNRequest struct {
-	dn           string
-	newrdn       string
-	deleteoldrdn bool
-	newSuperior  string
-}
 type AttributeValueAssertion struct {
 	attributeDesc  string
 	assertionValue string
-}
-type CompareRequest struct {
-	dn  string
-	ava []AttributeValueAssertion
 }
 type ExtendedRequest struct {
 	requestName  string
