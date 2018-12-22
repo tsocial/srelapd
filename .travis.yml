@@ -9,7 +9,7 @@ go:
 
 script:
   - make docker_build
-  - docker-compose -f testdata/docker-compose.yaml up -d srelapd srelapds
+  - docker-compose -f testdata/docker-compose.yaml up srelapd srelapds
   - sleep 5
   - cd testdata
   - python -m pip install --user python-ldap
