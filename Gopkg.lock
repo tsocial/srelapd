@@ -81,11 +81,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:87cc3700139e18e4ecb7909ebd8bf296c3781148b0b00d61f1fc0bbca2d8a91e"
+  digest = "1:1e468ceb87d19a945fac5d70b95157514bf23ebca0d4927e7daae29be513de85"
   name = "github.com/tsocial/catoolkit"
   packages = ["tlsproxy"]
   pruneopts = "UT"
-  revision = "45d846600f92544f872bcd1ab1f0d10197328a27"
+  revision = "683ef50a2c99e8156d12f2e2d5b2d46938665ddf"
 
 [[projects]]
   digest = "1:4069aaefc8b975f84debd1604a4ea0b5aec39eace937f22df553328efbc09057"

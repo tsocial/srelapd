@@ -10,13 +10,7 @@ import (
 )
 
 var (
-	cfgFile    = kingpin.Flag("config", "Config File").Required().File()
-	listen     = kingpin.Flag("listen", "Listening on port").Default("389").String()
-	caCert     = kingpin.Flag("ca-cert-file", "CA Cert File").String()
-	certFile   = kingpin.Flag("cert-file", "Cert File").String()
-	keyFile    = kingpin.Flag("key-file", "Key File").String()
-	serverName = kingpin.Flag("server-name", "ServerName in tls Config").
-			Default("localhost").String()
+	cfgFile = kingpin.Flag("config", "Config File").Required().File()
 )
 
 // interface for backend handler
@@ -72,17 +66,17 @@ func main() {
 
 	params := &tlsproxy.TlsParams{
 		HardFail:   false,
-		CACertFile: *caCert,
-		CertFile:   *certFile,
-		KeyFile:    *keyFile,
-		ServerName: *serverName,
+		CACertFile: *tlsproxy.RootCert,
+		CertFile:   *tlsproxy.CertFile,
+		KeyFile:    *tlsproxy.KeyFile,
+		ServerName: *tlsproxy.TlsServerName,
 	}
 
-	if *caCert == "" || *certFile == "" || *keyFile == "" {
+	if *tlsproxy.RootCert == "" || *tlsproxy.CertFile == "" || *tlsproxy.KeyFile == "" {
 		params.SkipTls = true
 	}
 
-	s.ListenAndServe(*listen, params)
+	s.ListenAndServe(*tlsproxy.Listen, params)
 }
 
 // doConfig reads the cli flags and config file

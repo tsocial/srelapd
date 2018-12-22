@@ -19,6 +19,6 @@ services:
     ports:
       - 8089:8080
     restart: always
-    entrypoint: "./srelapd --listen=8080 --config=/opt/lapd/ldap.json --ca-cert-file=/opt/lapd/cert-chain.pem  --cert-file=/opt/lapd/server.pem --key-file=/opt/lapd/server-key.pem --server-name=dc1_server"
+    entrypoint: "./srelapd --listen=8080 --config=/opt/lapd/ldap.json --root-cert-file=/opt/lapd/cert-chain.pem  --cert-file=/opt/lapd/server.pem --key-file=/opt/lapd/server-key.pem --tls-server-name=dc1_server"
     volumes:
       - ".:/opt/lapd"
