@@ -1,6 +1,4 @@
-stages
 language: go
-sudo: false
 addons:
   hosts:
     - dc1_server
