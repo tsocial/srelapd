@@ -3,9 +3,6 @@ sudo: false
 addons:
   hosts:
     - dc1_server
-  apt:
-    packages:
-      - ldap-utils
 
 go:
   - "1.10"
