@@ -1,8 +1,12 @@
+stages
 language: go
 sudo: false
 addons:
   hosts:
     - dc1_server
+  apt:
+    packages:
+      - python 3.5
 
 go:
   - "1.10"
@@ -11,9 +15,8 @@ script:
   - make docker_build
   - docker-compose -f testdata/docker-compose.yaml up -d srelapd
   - sleep 5
-  - cd testdata
-  - python -m pip install --user python-ldap
-  - env SKIP_TLS=1 python -m unittest -vv test_ldap
+  - python3 -m pip install --user python-ldap
+  - cd testdata && env SKIP_TLS=1 python3 -m unittest -vv test_ldap
 
 deploy:
   - provider: script
