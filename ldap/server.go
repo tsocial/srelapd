@@ -1,13 +1,13 @@
 package ldap
 
 import (
-	"crypto/tls"
 	"io"
 	"log"
 	"net"
 	"strings"
 
 	"github.com/nmcclain/asn1-ber"
+	"github.com/tsocial/catoolkit/tlsproxy"
 )
 
 type Binder interface {
@@ -66,58 +66,13 @@ func (server *Server) CloseFunc(baseDN string, f Closer) {
 	server.CloseFns[baseDN] = f
 }
 
-func (server *Server) ListenAndServeTLS(listenString string, certFile string, keyFile string) error {
-	cert, err := tls.LoadX509KeyPair(certFile, keyFile)
-	if err != nil {
-		return err
-	}
-	tlsConfig := tls.Config{Certificates: []tls.Certificate{cert}}
-	tlsConfig.ServerName = "localhost"
-	ln, err := tls.Listen("tcp", listenString, &tlsConfig)
-	if err != nil {
-		return err
-	}
-	err = server.serve(ln)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-func (server *Server) ListenAndServe(listenString string) error {
-	ln, err := net.Listen("tcp", listenString)
-	if err != nil {
-		return err
-	}
-	err = server.serve(ln)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-func (server *Server) serve(ln net.Listener) error {
-	newConn := make(chan net.Conn)
-	go func() {
-		for {
-			conn, err := ln.Accept()
-			if err != nil {
-				if !strings.HasSuffix(err.Error(), "use of closed network connection") {
-					log.Printf("Error accepting network connection: %s", err.Error())
-				}
-				break
-			}
-			newConn <- conn
-		}
-	}()
-
-	for {
-		select {
-		case c := <-newConn:
-			go server.handleConnection(c)
-		}
-	}
-	return nil
+func (server *Server) ListenAndServe(listen string, p *tlsproxy.TlsParams) {
+	tlsproxy.RunWithParams(listen, func(conn net.Conn) {
+		defer Handler(func(err error) {
+			log.Println(err)
+		})
+		server.handleConnection(conn)
+	}, p)
 }
 
 //

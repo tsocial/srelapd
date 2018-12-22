@@ -1,0 +1,24 @@
+version: '3'
+services:
+  srelapd:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    image: tsl8/srelapd
+    ports:
+      - 8081:8080
+    restart: always
+    entrypoint: "./srelapd --listen=8080 --config=/opt/ldap.json"
+    volumes:
+      - "./ldap.json:/opt/ldap.json"
+  srelapds:
+    build:
+      context: ../
+      dockerfile: Dockerfile
+    image: tsl8/srelapd
+    ports:
+      - 389:8080
+    restart: always
+    entrypoint: "./srelapd --listen=8080 --config=/opt/lapd/ldap.json --ca-cert-file=/opt/lapd/cert-chain.pem  --cert-file=/opt/lapd/server.pem --key-file=/opt/lapd/server-key.pem --server-name=dc1_server"
+    volumes:
+      - ".:/opt/lapd"

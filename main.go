@@ -2,17 +2,21 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
-	"log"
 
+	"github.com/tsocial/catoolkit/tlsproxy"
 	"github.com/tsocial/srelapd/ldap"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (
-	cfgFile = kingpin.Flag("config", "Config File").Required().File()
-	port    = kingpin.Flag("port", "Port").Required().Int()
+	cfgFile    = kingpin.Flag("config", "Config File").Required().File()
+	listen     = kingpin.Flag("listen", "Listening on port").Default("389").String()
+	caCert     = kingpin.Flag("ca-cert-file", "CA Cert File").String()
+	certFile   = kingpin.Flag("cert-file", "Cert File").String()
+	keyFile    = kingpin.Flag("key-file", "Key File").String()
+	serverName = kingpin.Flag("server-name", "ServerName in tls Config").
+			Default("localhost").String()
 )
 
 // interface for backend handler
@@ -66,11 +70,19 @@ func main() {
 	s.SearchFunc("", handler)
 	s.CloseFunc("", handler)
 
-	log.Printf("Frontend LDAP server listening on %v\n", *port)
-
-	if err := s.ListenAndServe(fmt.Sprintf("0.0.0.0:%v", *port)); err != nil {
-		panic(err)
+	params := &tlsproxy.TlsParams{
+		HardFail:   false,
+		CACertFile: *caCert,
+		CertFile:   *certFile,
+		KeyFile:    *keyFile,
+		ServerName: *serverName,
 	}
+
+	if *caCert == "" || *certFile == "" || *keyFile == "" {
+		params.SkipTls = true
+	}
+
+	s.ListenAndServe(*listen, params)
 }
 
 // doConfig reads the cli flags and config file

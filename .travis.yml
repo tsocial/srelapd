@@ -1,6 +1,8 @@
 language: go
 sudo: false
 addons:
+  hosts:
+    - dc1_server
   apt:
     packages:
       - ldap-utils
@@ -9,10 +11,12 @@ go:
   - "1.10"
 
 script:
-  - make build
-  - docker-compose -f build/docker-compose.yaml up -d srelapd
+  - make docker_build
+  - docker-compose -f testdata/docker-compose.yaml up -d srelapd selapds
   - sleep 5
-  - ldapsearch -LLL -H ldap://localhost:8089 -D cn=ldap10,ou=sre,dc=tsocial,dc=com -w mysecret -x -bdc=tsocial,dc=com cn=ldap20
+  - cd testdata
+  - env SKIP_TLS=1 python -m unittest -vv test_ldap
+  - python -m unittest -vv test_ldap
 
 deploy:
   - provider: script
