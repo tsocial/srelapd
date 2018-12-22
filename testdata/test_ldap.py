@@ -10,7 +10,7 @@ import ldap
 BIND = 'cn=ldap10,ou=sre,dc=tsocial,dc=com'
 BIND_SECRET = "mysecret"
 LDAP_HOST = 'ldap://localhost:8081'
-LDAPS_HOST = 'ldaps://localhost:389'
+LDAPS_HOST = 'ldaps://localhost:8089'
 CWD = os.path.dirname(os.path.realpath(__file__))
 
 class TestLDAPSearch(unittest.TestCase):
