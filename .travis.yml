@@ -9,9 +9,10 @@ go:
 
 script:
   - make docker_build
-  - docker-compose -f testdata/docker-compose.yaml up -d srelapd selapds
+  - docker-compose -f testdata/docker-compose.yaml up -d srelapd srelapds
   - sleep 5
   - cd testdata
+  - python -m pip install python-ldap
   - env SKIP_TLS=1 python -m unittest -vv test_ldap
   - python -m unittest -vv test_ldap
 
