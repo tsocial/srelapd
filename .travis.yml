@@ -2,9 +2,6 @@ language: go
 addons:
   hosts:
     - dc1_server
-  apt:
-    packages:
-      - python 3.5
 
 go:
   - "1.10"
