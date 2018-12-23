@@ -1,0 +1,4 @@
+FROM python
+RUN apt-get update
+RUN apt-get install -y libsasl2-dev libldap2-dev
+RUN pip install python-ldap

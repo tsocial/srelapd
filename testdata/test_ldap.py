@@ -9,8 +9,10 @@ import ldap
 
 BIND = 'cn=ldap10,ou=sre,dc=tsocial,dc=com'
 BIND_SECRET = "mysecret"
-LDAP_HOST = 'ldap://localhost:8081'
-LDAPS_HOST = 'ldaps://localhost:8089'
+
+LDAP_HOST = os.environ.get("LDAP_HOST", 'ldap://localhost:8081')
+SKIP_TLS = not LDAP_HOST.startswith("ldaps")
+
 CWD = os.path.dirname(os.path.realpath(__file__))
 
 class TestLDAPSearch(unittest.TestCase):
@@ -31,7 +33,8 @@ class TestLDAPSearch(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        if os.environ.get('SKIP_TLS', False):
+        print(LDAP_HOST)
+        if SKIP_TLS:
             return
 
         ldap.set_option(ldap.OPT_X_TLS_CACERTFILE,
@@ -44,11 +47,7 @@ class TestLDAPSearch(unittest.TestCase):
                         os.path.join(CWD, 'client-key.pem'))
 
     def setUp(self):
-        if os.environ.get('SKIP_TLS', False):
-            self.l = ldap.initialize(LDAP_HOST)
-        else:
-            self.l = ldap.initialize(LDAPS_HOST)
-
+        self.l = ldap.initialize(LDAP_HOST)
         self.l.protocol_version=ldap.VERSION3
         self.l.simple_bind_s(BIND, BIND_SECRET)
 

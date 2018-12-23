@@ -1,17 +1,12 @@
 language: go
-addons:
-  hosts:
-    - dc1_server
 
 go:
   - "1.10"
 
 script:
   - make docker_build
-  - docker-compose -f testdata/docker-compose.yaml up -d srelapd
-  - sleep 5
-  - python3 -m pip install --user python-ldap
-  - cd testdata && env SKIP_TLS=1 python3 -m unittest -vv test_ldap
+  - docker-compose -f testdata/docker-compose.yaml up test_ldap
+  - docker-compose -f testdata/docker-compose.yaml up test_ldaps
 
 deploy:
   - provider: script

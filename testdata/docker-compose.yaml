@@ -11,6 +11,7 @@ services:
     entrypoint: "./srelapd --listen=8080 --config=/opt/ldap.json"
     volumes:
       - "./ldap.json:/opt/ldap.json"
+
   srelapds:
     build:
       context: ../
@@ -22,3 +23,30 @@ services:
     entrypoint: "./srelapd --listen=8080 --config=/opt/lapd/ldap.json --root-cert-file=/opt/lapd/cert-chain.pem  --cert-file=/opt/lapd/server.pem --key-file=/opt/lapd/server-key.pem --tls-server-name=dc1_server"
     volumes:
       - ".:/opt/lapd/"
+
+  test_ldap:
+    extra_hosts:
+      - dc1_server:172.17.0.1
+    image: tsl8/python-ldap
+    depends_on:
+      - srelapd
+    environment:
+      - LDAP_HOST=ldap://dc1_server:8081
+    volumes:
+      - ".:/opt/lapd"
+    working_dir: /opt/lapd
+    command: "python -m unittest -vvv test_ldap"
+
+  test_ldaps:
+    extra_hosts:
+      - dc1_server:172.17.0.1
+    hostname: dc1_server
+    image: tsl8/python-ldap
+    depends_on:
+      - srelapds
+    environment:
+      - LDAP_HOST=ldaps://dc1_server:8089
+    volumes:
+      - ".:/opt/lapd"
+    working_dir: /opt/lapd
+    command: "python -m unittest -vvv test_ldap"
