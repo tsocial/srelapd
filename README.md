@@ -6,6 +6,12 @@ SuperLight weight LDAP Server.
 ## Configuration
 Create a configuration .JSON file
 
+Password is generated using:
+
+```
+$: echo -n "password" | openssl dgst -sha256
+```
+
 ```json
 {
   "baseDN": "dc=tsocial,dc=com",
