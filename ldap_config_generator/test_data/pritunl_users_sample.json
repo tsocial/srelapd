@@ -1,0 +1,78 @@
+[
+    {
+        "audit": true,
+        "disabled": true,
+        "gravatar": true,
+        "groups": [
+            "sre"
+        ],
+        "id": "5c1ce5d89e3d5e14158c233e",
+        "name": "Disabled User",
+        "email": "disabledr@trustingsocial.com",
+        "organization": "5b5893f426089e8765ccaa20",
+        "organization_name": "TS-Default",
+        "otp_secret": "ANDKDL891JHYTREQ",
+        "otp_auth": true,
+        "pin": true,
+        "sso": "google",
+        "status": false,
+        "type": "client"
+    },
+    {
+        "audit": true,
+        "disabled": false,
+        "gravatar": true,
+        "groups": [
+            "sre"
+        ],
+        "id": "5c1ce5d89e3d5e14158c233e",
+        "name": "SRE User",
+        "email": "sreuser@trustingsocial.com",
+        "organization": "5b5893f426089e8765ccaa20",
+        "organization_name": "TS-Default",
+        "otp_secret": "ANDKDL891JHYTREQ",
+        "otp_auth": true,
+        "pin": true,
+        "sso": "google",
+        "status": false,
+        "type": "client"
+    },
+    {
+        "audit": true,
+        "disabled": false,
+        "gravatar": true,
+        "groups": [
+            "metrics"
+        ],
+        "id": "5c21a1609e3d5e14158eec9b",
+        "name": "Non TKS user",
+        "email": "nontksuser@trustingsocial.com",
+        "organization": "5b5893f426089e8765ccaa20",
+        "organization_name": "TS-Default",
+        "otp_auth": true,
+        "otp_secret": "ANDKDL891JHYTREQ",
+        "pin": true,
+        "sso": "google",
+        "status": false,
+        "type": "client"
+    },
+    {
+        "audit": true,
+        "disabled": false,
+        "email": "jaideep@trustingsocial.com",
+        "gravatar": true,
+        "groups": [
+            "tks"
+        ],
+        "id": "5c35b5f5a8947b0d3a33b785",
+        "name": "Jaideep",
+        "organization": "5b5893f426089e8765ccaa20",
+        "organization_name": "TS-Default",
+        "otp_auth": true,
+        "otp_secret": "ANDKDL891JHYTREQ",
+        "pin": true,
+        "sso": "google",
+        "status": false,
+        "type": "client"
+    }
+]

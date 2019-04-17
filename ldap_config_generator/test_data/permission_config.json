@@ -1,0 +1,16 @@
+{
+    "internal": {
+        "sre":  {"group_id": 5500, "user_id": 10001},
+        "tks":  {"group_id": 5501, "user_id": 10002}
+    },
+    "external": {
+        "users": {
+            "searcher": {
+                "name": "searcher",
+                "disabled": false,
+                "groups": ["sre"],
+                "email": "sre@trustingsocial.com"
+            }
+        }
+    }
+}
