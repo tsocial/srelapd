@@ -92,15 +92,14 @@ func (h configHandler) Bind(bindDN, bindSimplePw string, conn net.Conn) (resultC
 	}
 
 	if len(user.OTPSecret) > 0 && !validotp {
-		if len(bindSimplePw) > 6 {
-			otp := bindSimplePw[len(bindSimplePw)-6:]
-			bindSimplePw = bindSimplePw[:len(bindSimplePw)-6]
-
-			validotp = totp.Validate(otp, user.OTPSecret)
+		if len(bindSimplePw) == 6 {
+			validotp = totp.Validate(bindSimplePw, user.OTPSecret)
 		}
 	}
 
-	if !validotp {
+	if validotp {
+		return ldap.LDAPResultSuccess, nil
+	} else {
 		log.Printf(
 			"Bind Error: invalid token as %s from %s\n",
 			bindDN, conn.RemoteAddr().String(),

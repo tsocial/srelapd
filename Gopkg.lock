@@ -3,128 +3,107 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:315c5f2f60c76d89b871c73f9bd5fe689cad96597afd50fb9992228ef80bdd34"
   name = "github.com/alecthomas/template"
   packages = [
     ".",
-    "parse",
+    "parse"
   ]
-  pruneopts = "UT"
   revision = "a0175ee3bccc567396460bf5acd36800cb10c49c"
 
 [[projects]]
   branch = "master"
-  digest = "1:c198fdc381e898e8fb62b8eb62758195091c313ad18e52a3067366e1dda2fb3c"
   name = "github.com/alecthomas/units"
   packages = ["."]
-  pruneopts = "UT"
   revision = "2efee857e7cfd4f3d0138cc3cbb1b4966962b93a"
 
 [[projects]]
-  digest = "1:7b94d37d65c0445053c6f3e73090e3966c1c29127035492c349e14f25c440359"
   name = "github.com/boombuler/barcode"
   packages = [
     ".",
     "qr",
-    "utils",
+    "utils"
   ]
-  pruneopts = "UT"
   revision = "3cfea5ab600ae37946be2b763b8ec2c1cf2d272d"
   version = "v1.0.0"
 
 [[projects]]
-  digest = "1:66b0766ab5da003a215354cc60487e39d0ff0158e264c6fab29fa3e7ef263ca8"
   name = "github.com/cloudflare/cfssl"
   packages = [
     "crypto/pkcs7",
     "errors",
     "helpers",
     "helpers/derhelpers",
-    "log",
+    "log"
   ]
-  pruneopts = "UT"
   revision = "5d63dbd981b5c408effbb58c442d54761ff94fbd"
   version = "1.3.2"
 
 [[projects]]
-  digest = "1:fabe4bb8fadac9fd769267f14316ed84a86cd49e722c5e65f4881ae0082bf76f"
   name = "github.com/google/certificate-transparency-go"
   packages = [
     ".",
     "asn1",
     "tls",
     "x509",
-    "x509/pkix",
+    "x509/pkix"
   ]
-  pruneopts = "UT"
   revision = "5ab67e519c93568ac3ee50fd6772a5bcf8aa460d"
 
 [[projects]]
   branch = "master"
-  digest = "1:1425ecbdc8449cf055118176863003ceb553777e288ffd5e64d426ce0dc2e163"
   name = "github.com/nmcclain/asn1-ber"
   packages = ["."]
-  pruneopts = "UT"
   revision = "2661553a04840c556cf4f3cd69fa3332bae84e9d"
 
 [[projects]]
-  digest = "1:6c7a3f738e37a1c7ad3d56122a34932140654d51a57e01f8613cdf3eaf050911"
   name = "github.com/pquerna/otp"
   packages = [
     ".",
     "hotp",
-    "totp",
+    "totp"
   ]
-  pruneopts = "UT"
   revision = "b7b89250c468c06871d3837bee02e2d5c155ae19"
   version = "v1.0.0"
 
 [[projects]]
   branch = "master"
-  digest = "1:1e468ceb87d19a945fac5d70b95157514bf23ebca0d4927e7daae29be513de85"
   name = "github.com/tsocial/catoolkit"
   packages = ["tlsproxy"]
-  pruneopts = "UT"
   revision = "683ef50a2c99e8156d12f2e2d5b2d46938665ddf"
 
 [[projects]]
-  digest = "1:4069aaefc8b975f84debd1604a4ea0b5aec39eace937f22df553328efbc09057"
   name = "github.com/tsocial/cfssl"
   packages = ["revoke"]
-  pruneopts = "UT"
   revision = "bd4e730d5cf68d132d5b9e4a747318a4e6c10d64"
   version = "1.3.3"
 
 [[projects]]
   branch = "master"
-  digest = "1:2ca11b2834bbb2d154fe1eacf0f797aa5dd8dd5b170ff3094d663483943fd334"
+  name = "github.com/tsocial/srelapd"
+  packages = ["ldap"]
+  revision = "8129497bee3a8ece0c2800f2caab940fa6373b26"
+
+[[projects]]
+  branch = "master"
   name = "golang.org/x/crypto"
   packages = [
     "cryptobyte",
     "cryptobyte/asn1",
     "ocsp",
     "pkcs12",
-    "pkcs12/internal/rc2",
+    "pkcs12/internal/rc2"
   ]
-  pruneopts = "UT"
   revision = "505ab145d0a99da450461ae2c1a9f6cd10d1f447"
 
 [[projects]]
-  digest = "1:c06d9e11d955af78ac3bbb26bd02e01d2f61f689e1a3bce2ef6fb683ef8a7f2d"
   name = "gopkg.in/alecthomas/kingpin.v2"
   packages = ["."]
-  pruneopts = "UT"
   revision = "947dcec5ba9c011838740e680966fd7087a71d0d"
   version = "v2.2.6"
 
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  input-imports = [
-    "github.com/nmcclain/asn1-ber",
-    "github.com/pquerna/otp/totp",
-    "github.com/tsocial/catoolkit/tlsproxy",
-    "gopkg.in/alecthomas/kingpin.v2",
-  ]
+  inputs-digest = "9334b36bc6d67498c19926c41516d77ae629bec9c54a2fb3133d2d398bf9ec05"
   solver-name = "gps-cdcl"
   solver-version = 1
