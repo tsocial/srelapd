@@ -85,27 +85,17 @@ func (h configHandler) Bind(bindDN, bindSimplePw string, conn net.Conn) (resultC
 		return ldap.LDAPResultInvalidCredentials, nil
 	}
 
-	validotp := false
+	if len(user.OTPSecret) > 0 && len(bindSimplePw) == h.cfg.OTPlength {
+		validotp := totp.Validate(bindSimplePw, user.OTPSecret)
+		if !validotp {
+			log.Printf(
+				"Bind Error: invalid token as %s from %s\n",
+				bindDN, conn.RemoteAddr().String(),
+			)
 
-	if len(user.OTPSecret) == 0 {
-		validotp = true
-	}
-
-	if len(user.OTPSecret) > 0 && !validotp {
-		if len(bindSimplePw) == h.cfg.OTPlength {
-			validotp = totp.Validate(bindSimplePw, user.OTPSecret)
+			return ldap.LDAPResultInvalidCredentials, nil
 		}
-	}
-
-	if validotp {
 		return ldap.LDAPResultSuccess, nil
-	} else {
-		log.Printf(
-			"Bind Error: invalid token as %s from %s\n",
-			bindDN, conn.RemoteAddr().String(),
-		)
-
-		return ldap.LDAPResultInvalidCredentials, nil
 	}
 
 	// finally, validate user's pw
