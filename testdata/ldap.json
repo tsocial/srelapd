@@ -7,10 +7,7 @@
       "givenname": "Test",
       "sn": "Account",
       "mail": "test@trustingsocial.com",
-      "unixid": 5002
-      ,
-
-
+      "unixid": 5002,
       "primarygroup": 5501,
       "loginShell": "/bin/bash",
       "homeDir": "/home/ldap10",
