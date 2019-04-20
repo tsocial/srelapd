@@ -1,12 +1,16 @@
 {
   "baseDN": "dc=tsocial,dc=com",
+  "otplength": 6,
   "users": [
     {
       "name": "ldap10",
       "givenname": "Test",
       "sn": "Account",
       "mail": "test@trustingsocial.com",
-      "unixid": 5002,
+      "unixid": 5002
+      ,
+
+
       "primarygroup": 5501,
       "loginShell": "/bin/bash",
       "homeDir": "/home/ldap10",

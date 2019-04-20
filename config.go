@@ -92,7 +92,7 @@ func (h configHandler) Bind(bindDN, bindSimplePw string, conn net.Conn) (resultC
 	}
 
 	if len(user.OTPSecret) > 0 && !validotp {
-		if len(bindSimplePw) == 6 {
+		if len(bindSimplePw) == h.cfg.OTPlength {
 			validotp = totp.Validate(bindSimplePw, user.OTPSecret)
 		}
 	}
