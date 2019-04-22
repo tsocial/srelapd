@@ -1,5 +1,6 @@
 {
   "baseDN": "dc=tsocial,dc=com",
+  "otplength": 6,
   "users": [
     {
       "name": "ldap10",

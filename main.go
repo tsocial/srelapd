@@ -43,9 +43,10 @@ type configGroup struct {
 }
 
 type config struct {
-	BaseDN string
-	Groups []configGroup
-	Users  []configUser
+	BaseDN    string
+	OTPlength int
+	Groups    []configGroup
+	Users     []configUser
 }
 
 func main() {
